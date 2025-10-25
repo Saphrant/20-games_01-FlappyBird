@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://crl80q0wx6im"]
+[gd_scene load_steps=4 format=3 uid="uid://crl80q0wx6im"]
+
+[ext_resource type="PackedScene" uid="uid://bairsqbp31pdo" path="res://Scenes/background.tscn" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://b0p75f4xcmrpv" path="res://Scenes/player.tscn" id="2_8gbba"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bo1nx"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_bo1nx")]
+
+[node name="Player" parent="." instance=ExtResource("2_8gbba")]
+position = Vector2(0, 163)
+physics_material_override = SubResource("PhysicsMaterial_bo1nx")
