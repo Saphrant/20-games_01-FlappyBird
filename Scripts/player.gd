@@ -5,7 +5,7 @@ extends RigidBody2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var gravity := get_gravity() 
 
-@export var tap_force := 500
+@export var tap_force := 600
 
 var tap_vector := Vector2(0,-tap_force)
 var is_started := false
@@ -26,7 +26,6 @@ func _physics_process(_delta: float) -> void:
 		cpu_particles_2d.emitting = true		
 	else:
 		linear_velocity += gravity
-	print(gravity_scale)
 
 func on_game_start() -> void:
 	anim_player.stop()

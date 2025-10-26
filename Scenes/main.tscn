@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://crl80q0wx6im"]
+[gd_scene load_steps=7 format=3 uid="uid://crl80q0wx6im"]
 
 [ext_resource type="Script" uid="uid://b0f7pqub3c8gy" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bairsqbp31pdo" path="res://Scenes/background.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://b0p75f4xcmrpv" path="res://Scenes/player.tscn" id="2_8gbba"]
-[ext_resource type="Texture2D" uid="uid://b0nu51uwq6oxb" path="res://Assets/PNG/UI/textGetReady.png" id="2_21xkr"]
+[ext_resource type="Theme" uid="uid://bgoj80cvgs7fg" path="res://main_theme.tres" id="2_21xkr"]
 [ext_resource type="PackedScene" uid="uid://tcqqabt5pmo7" path="res://Scenes/MainMenu.tscn" id="2_jjvhh"]
-[ext_resource type="Texture2D" uid="uid://bfair7r4y0wls" path="res://Assets/PNG/UI/textGameOver.png" id="3_6bp64"]
 
 [sub_resource type="Curve2D" id="Curve2D_jjvhh"]
 _data = {
@@ -18,51 +17,84 @@ script = ExtResource("1_8gbba")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="UI"]
+[node name="Score" type="Control" parent="UI"]
 layout_mode = 3
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_top = 60.0
-offset_bottom = 60.0
+anchor_bottom = 1.0
+offset_bottom = -70.0
 grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="GetReady" type="TextureRect" parent="UI/Control"]
+[node name="ScoreLabel" type="Label" parent="UI/Score"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -200.0
-offset_right = 200.0
-offset_bottom = 73.0
+offset_left = -23.0
+offset_right = 23.0
+offset_bottom = 74.0
 grow_horizontal = 2
-texture = ExtResource("2_21xkr")
+theme = ExtResource("2_21xkr")
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
 
-[node name="GameOver" type="TextureRect" parent="UI/Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
-offset_right = 200.0
-offset_bottom = 73.0
-grow_horizontal = 2
-texture = ExtResource("3_6bp64")
-
-[node name="Numbers" type="TextureRect" parent="UI/Control"]
+[node name="Countdown" type="Label" parent="UI/Score"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -18.5
-offset_top = 92.0
-offset_right = 18.5
-offset_bottom = 168.0
+offset_left = -23.0
+offset_top = -37.0
+offset_right = 23.0
+offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_21xkr")
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="GetReady" type="Label" parent="UI/Score"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -195.5
+offset_top = 90.0
+offset_right = 195.5
+offset_bottom = 164.0
+grow_horizontal = 2
+theme = ExtResource("2_21xkr")
+theme_override_font_sizes/font_size = 46
+text = "Get Ready"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="GameOver" type="Label" parent="UI/Score"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -52.0
+offset_right = 288.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_21xkr")
+theme_override_font_sizes/font_size = 46
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="MainMenu" parent="." instance=ExtResource("2_jjvhh")]
 process_mode = 3

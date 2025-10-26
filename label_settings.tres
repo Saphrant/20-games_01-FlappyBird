@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bvaa6i3p068d2"]
+
+[ext_resource type="FontFile" uid="uid://bxb5tbtqo7od3" path="res://Assets/Font/fizzy-soda.ttf" id="1_8aso4"]
+
+[resource]
+resource_local_to_scene = true
+font = ExtResource("1_8aso4")
+font_color = Color(1, 0.7435, 0.19, 1)
+outline_size = 3
+outline_color = Color(0.99999994, 0.9683499, 0.88399005, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 7
+stacked_outline_0/color = Color(0.67, 0.31266668, 0, 1)

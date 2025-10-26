@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://tcqqabt5pmo7"]
+[gd_scene load_steps=15 format=3 uid="uid://tcqqabt5pmo7"]
 
 [ext_resource type="Script" uid="uid://d17x21oyyhqd3" path="res://Scripts/main_menu.gd" id="1_loo7a"]
 [ext_resource type="Texture2D" uid="uid://cqmi8he10rw2y" path="res://Assets/PNG/UI/UIbg.png" id="2_if7li"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://chp166bw5nfdb" path="res://Assets/PNG/Planes/planeRed3.png" id="7_2x1g0"]
 [ext_resource type="Texture2D" uid="uid://cfl55k7opw8pa" path="res://Assets/PNG/UI/tapRight.png" id="8_riqfo"]
 [ext_resource type="Texture2D" uid="uid://c3iivx7y4vm08" path="res://Assets/PNG/UI/tapLeft.png" id="9_yxkem"]
-[ext_resource type="FontFile" uid="uid://dw5jxx8qvvso6" path="res://Assets/Font/kenvector_future.ttf" id="10_7v4os"]
+[ext_resource type="Theme" uid="uid://bgoj80cvgs7fg" path="res://main_theme.tres" id="10_loo7a"]
 
 [sub_resource type="Animation" id="Animation_65hh5"]
 resource_name = "PlaneMovement"
@@ -103,10 +103,6 @@ _data = {
 &"tap_blink": SubResource("Animation_pjscj")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_leunp"]
-font = ExtResource("10_7v4os")
-font_size = 64
-
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_loo7a")
 
@@ -193,10 +189,12 @@ texture = ExtResource("9_yxkem")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 23.0
+offset_top = 18.0
+offset_bottom = 124.0
 grow_horizontal = 2
+theme = ExtResource("10_loo7a")
+theme_override_font_sizes/font_size = 64
 text = "Tappy Plane"
-label_settings = SubResource("LabelSettings_leunp")
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="CanvasLayer"]
