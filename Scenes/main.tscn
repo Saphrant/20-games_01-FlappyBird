@@ -1,14 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://crl80q0wx6im"]
+[gd_scene load_steps=5 format=3 uid="uid://crl80q0wx6im"]
 
+[ext_resource type="Script" uid="uid://b0f7pqub3c8gy" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bairsqbp31pdo" path="res://Scenes/background.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://b0p75f4xcmrpv" path="res://Scenes/player.tscn" id="2_8gbba"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bo1nx"]
+[sub_resource type="Curve2D" id="Curve2D_jjvhh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 837, 318, 0, 0, 0, 0, 837, 150)
+}
+point_count = 2
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_8gbba")
 
 [node name="Background" parent="." instance=ExtResource("1_bo1nx")]
 
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(0, 163)
-physics_material_override = SubResource("PhysicsMaterial_bo1nx")
+position = Vector2(91, 163)
+gravity_scale = 2.0
+tap_force = 300
+
+[node name="ObstaclePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jjvhh")
+
+[node name="ObstacleSpawnLocation" type="PathFollow2D" parent="ObstaclePath"]
+position = Vector2(837, 318)
+rotation = -1.5707964
+
+[node name="ObstacleParent" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(383.645, 0)
+limit_top = 0
+limit_bottom = 480
+limit_smoothed = true
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="Timers"]
+wait_time = 0.7
+
+[node name="StartTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timers/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]

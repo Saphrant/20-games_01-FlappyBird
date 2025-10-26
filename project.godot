@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=800
+window/size/viewport_height=480
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
@@ -32,6 +32,13 @@ Tap={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="obstacle"
+2d_physics/layer_3="ground"
+2d_physics/layer_4="trigger"
 
 [rendering]
 

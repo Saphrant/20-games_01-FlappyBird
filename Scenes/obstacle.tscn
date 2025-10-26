@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu47xxsef0a5k"]
+
+[ext_resource type="Texture2D" uid="uid://ct7uskv4bgjlw" path="res://Assets/PNG/rockDown.png" id="1_2p81s"]
+[ext_resource type="Script" uid="uid://cmp7tvka0uhm0" path="res://Scripts/obstacles.gd" id="1_rvx1i"]
+[ext_resource type="Texture2D" uid="uid://doxxeo226wj8" path="res://Assets/PNG/rock.png" id="3_rvx1i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6yce"]
+size = Vector2(5, 180)
+
+[node name="Obstacle" type="Node2D"]
+script = ExtResource("1_rvx1i")
+
+[node name="Top" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="RockDown" type="Sprite2D" parent="Top"]
+position = Vector2(0, -200)
+texture = ExtResource("1_2p81s")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Top"]
+position = Vector2(4.6666665, -240.33333)
+polygon = PackedVector2Array(7.3333335, 159.33333, -57.666668, -79.66667, 50.333332, -79.66667)
+
+[node name="Bottom" type="Area2D" parent="."]
+position = Vector2(0, 200)
+collision_layer = 2
+
+[node name="RockUp" type="Sprite2D" parent="Bottom"]
+texture = ExtResource("3_rvx1i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bottom"]
+position = Vector2(3, 38.666668)
+polygon = PackedVector2Array(-58, 76.33333, 50, 79.33333, 8, -155.66667)
+
+[node name="Score" type="Area2D" parent="." groups=["score"]]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Score"]
+position = Vector2(15, 0)
+shape = SubResource("RectangleShape2D_a6yce")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-10, -10, 104, 20)
+
+[connection signal="body_entered" from="Score" to="." method="_on_score_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
