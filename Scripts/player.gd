@@ -3,7 +3,6 @@ extends RigidBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
-
 @onready var gravity := get_gravity() 
 
 @export var tap_force := 500
@@ -27,8 +26,10 @@ func _physics_process(_delta: float) -> void:
 		cpu_particles_2d.emitting = true		
 	else:
 		linear_velocity += gravity
+	print(gravity_scale)
 
 func on_game_start() -> void:
 	anim_player.stop()
 	is_started = true
-	gravity_scale = 2
+	var tween = create_tween()
+	tween.tween_property(self,"gravity_scale", 2.0, 0.5).set_ease(Tween.EASE_OUT)

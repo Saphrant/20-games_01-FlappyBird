@@ -7,16 +7,31 @@ signal game_start
 @onready var obstacle_parent: Node2D = $ObstacleParent
 @onready var main_menu: Node2D = $MainMenu
 @onready var start_timer: Timer = $Timers/StartTimer
+@onready var get_ready_noti: TextureRect = $UI/Control/GetReady
+@onready var game_over_noti: TextureRect = $UI/Control/GameOver
+@onready var numbers: TextureRect = $UI/Control/Numbers
+@onready var number_array:= [
+	preload("res://Assets/PNG/Numbers/number0.png"),
+	preload("res://Assets/PNG/Numbers/number1.png"),
+	preload("res://Assets/PNG/Numbers/number2.png")
+]
 
 var obstacle_scene : PackedScene = preload("res://Scenes/obstacle.tscn")
 var score : int = 0
+var is_started: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	main_menu.button_start.connect(new_game)
 	game_start.connect(player.on_game_start)
-	#get_tree().paused = true
-	
+	get_ready_noti.visible = true
+	game_over_noti.visible = false
+	numbers.visible = true
+
+func _process(_delta: float) -> void:
+	if not is_started:
+		_countdown()
+
 func _on_obstacle_score_up(amount: int) -> void:
 	score += amount
 	print("New score: ", score)
@@ -34,6 +49,7 @@ func spawn_obstacle() -> void:
 	
 func game_over() -> void:
 	spawn_timer.stop()
+	game_over_noti.visible = true
 
 func new_game() -> void:
 	score = 0
@@ -46,9 +62,21 @@ func _on_spawn_timer_timeout() -> void:
 	
 	
 func _on_start_timer_timeout() -> void:
+	spawn_obstacle()
 	spawn_timer.start()
+	get_ready_noti.visible = false
+	numbers.visible = false
+	is_started = true
 	game_start.emit()
 	
 
 func _on_button_press() -> void:
 	new_game()
+
+func _countdown() -> void:
+	if start_timer.time_left > 2.0:
+		numbers.texture = number_array[2]
+	elif start_timer.time_left > 1:
+		numbers.texture = number_array[1]
+	else:
+		numbers.texture = number_array[0]
