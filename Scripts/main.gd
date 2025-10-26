@@ -1,22 +1,22 @@
 extends Node2D
 
+signal game_start
+
 @onready var player: RigidBody2D = $Player
 @onready var spawn_timer: Timer = $Timers/SpawnTimer
 @onready var obstacle_parent: Node2D = $ObstacleParent
+@onready var main_menu: Node2D = $MainMenu
+@onready var start_timer: Timer = $Timers/StartTimer
 
 var obstacle_scene : PackedScene = preload("res://Scenes/obstacle.tscn")
 var score : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	new_game()
+	main_menu.button_start.connect(new_game)
+	game_start.connect(player.on_game_start)
+	#get_tree().paused = true
 	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_obstacle_score_up(amount: int) -> void:
 	score += amount
 	print("New score: ", score)
@@ -37,7 +37,7 @@ func game_over() -> void:
 
 func new_game() -> void:
 	score = 0
-	$Timers/StartTimer.start()
+	start_timer.start()
 	
 
 func _on_spawn_timer_timeout() -> void:
@@ -45,6 +45,10 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_timer.wait_time = randf_range(0.5,1.2)
 	
 	
-	
 func _on_start_timer_timeout() -> void:
 	spawn_timer.start()
+	game_start.emit()
+	
+
+func _on_button_press() -> void:
+	new_game()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://crl80q0wx6im"]
+[gd_scene load_steps=6 format=3 uid="uid://crl80q0wx6im"]
 
 [ext_resource type="Script" uid="uid://b0f7pqub3c8gy" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bairsqbp31pdo" path="res://Scenes/background.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://b0p75f4xcmrpv" path="res://Scenes/player.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://tcqqabt5pmo7" path="res://Scenes/MainMenu.tscn" id="2_jjvhh"]
 
 [sub_resource type="Curve2D" id="Curve2D_jjvhh"]
 _data = {
@@ -13,11 +14,14 @@ point_count = 2
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8gbba")
 
+[node name="MainMenu" parent="." instance=ExtResource("2_jjvhh")]
+process_mode = 3
+z_index = 1
+
 [node name="Background" parent="." instance=ExtResource("1_bo1nx")]
 
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(91, 163)
-gravity_scale = 2.0
+position = Vector2(90, 165)
 tap_force = 300
 
 [node name="ObstaclePath" type="Path2D" parent="."]
@@ -41,6 +45,7 @@ limit_smoothed = true
 wait_time = 0.7
 
 [node name="StartTimer" type="Timer" parent="Timers"]
+process_mode = 3
 wait_time = 2.0
 one_shot = true
 

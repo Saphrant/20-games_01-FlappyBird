@@ -1,0 +1,216 @@
+[gd_scene load_steps=16 format=3 uid="uid://tcqqabt5pmo7"]
+
+[ext_resource type="Script" uid="uid://d17x21oyyhqd3" path="res://Scripts/main_menu.gd" id="1_loo7a"]
+[ext_resource type="Texture2D" uid="uid://cqmi8he10rw2y" path="res://Assets/PNG/UI/UIbg.png" id="2_if7li"]
+[ext_resource type="Texture2D" uid="uid://bqa7m5i3c6eew" path="res://Assets/PNG/Planes/planeRed1.png" id="3_rrcx7"]
+[ext_resource type="Texture2D" uid="uid://dvxfo1uj5eowh" path="res://Assets/PNG/UI/tap.png" id="4_fh7cp"]
+[ext_resource type="Texture2D" uid="uid://dsk04crkqx7hl" path="res://Assets/PNG/UI/tapTick.png" id="5_8e205"]
+[ext_resource type="Texture2D" uid="uid://bn6tmfwuyqr18" path="res://Assets/PNG/Planes/planeRed2.png" id="6_7467j"]
+[ext_resource type="Texture2D" uid="uid://chp166bw5nfdb" path="res://Assets/PNG/Planes/planeRed3.png" id="7_2x1g0"]
+[ext_resource type="Texture2D" uid="uid://cfl55k7opw8pa" path="res://Assets/PNG/UI/tapRight.png" id="8_riqfo"]
+[ext_resource type="Texture2D" uid="uid://c3iivx7y4vm08" path="res://Assets/PNG/UI/tapLeft.png" id="9_yxkem"]
+[ext_resource type="FontFile" uid="uid://dw5jxx8qvvso6" path="res://Assets/Font/kenvector_future.ttf" id="10_7v4os"]
+
+[sub_resource type="Animation" id="Animation_65hh5"]
+resource_name = "PlaneMovement"
+length = 0.55
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Plane:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_rrcx7"), ExtResource("3_rrcx7"), ExtResource("6_7467j"), ExtResource("6_7467j"), ExtResource("7_2x1g0"), ExtResource("7_2x1g0"), ExtResource("6_7467j"), ExtResource("6_7467j"), ExtResource("3_rrcx7"), ExtResource("3_rrcx7"), ExtResource("6_7467j"), ExtResource("6_7467j"), ExtResource("7_2x1g0"), ExtResource("7_2x1g0"), ExtResource("6_7467j"), ExtResource("6_7467j"), ExtResource("3_rrcx7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Plane:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(90, 160), Vector2(90, 160.71149), Vector2(90, 161.3605), Vector2(90, 161.94864), Vector2(90, 162.4776), Vector2(90, 162.94914), Vector2(90, 163.36511), Vector2(90, 163.7275), Vector2(90, 164.03839), Vector2(90, 164.30005), Vector2(90, 164.5149), Vector2(90, 164.68558), Vector2(90, 164.81506), Vector2(90, 164.90671), Vector2(90, 164.96443), Vector2(90, 164.99316), Vector2(90, 165)]
+}
+
+[sub_resource type="Animation" id="Animation_m7n2d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/TapHand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_fh7cp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Plane:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_rrcx7")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Plane:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(90, 165)]
+}
+
+[sub_resource type="Animation" id="Animation_pjscj"]
+resource_name = "tap_blink"
+length = 0.2
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/TapHand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_fh7cp"), ExtResource("5_8e205")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6byu3"]
+_data = {
+&"PlaneMovement": SubResource("Animation_65hh5"),
+&"RESET": SubResource("Animation_m7n2d"),
+&"tap_blink": SubResource("Animation_pjscj")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_leunp"]
+font = ExtResource("10_7v4os")
+font_size = 64
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_loo7a")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_if7li")
+region_rect = Rect2(0, 0, 265, 265)
+patch_margin_left = 7
+patch_margin_top = 11
+patch_margin_right = 7
+patch_margin_bottom = 11
+
+[node name="Plane" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 165.0
+offset_right = 178.0
+offset_bottom = 238.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_rrcx7")
+
+[node name="AnimationPlayerPlane" type="AnimationPlayer" parent="CanvasLayer/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_6byu3")
+}
+autoplay = "PlaneMovement"
+
+[node name="AnimationPlayerHand" type="AnimationPlayer" parent="CanvasLayer/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_6byu3")
+}
+autoplay = "tap_blink"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -29.5
+offset_right = 118.5
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="TapRight" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_riqfo")
+
+[node name="TapHand" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_fh7cp")
+
+[node name="TapLeft" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("9_yxkem")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Tappy Plane"
+label_settings = SubResource("LabelSettings_leunp")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -27.0
+offset_right = 138.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+flat = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

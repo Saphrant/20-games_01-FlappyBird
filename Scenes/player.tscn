@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0p75f4xcmrpv"]
+[gd_scene load_steps=12 format=3 uid="uid://b0p75f4xcmrpv"]
 
 [ext_resource type="Script" uid="uid://nj8p2w6ngvca" path="res://Scripts/player.gd" id="1_vgqql"]
 [ext_resource type="Texture2D" uid="uid://bqa7m5i3c6eew" path="res://Assets/PNG/Planes/planeRed1.png" id="2_fkybt"]
@@ -33,6 +33,45 @@ size = Vector2(58, 50)
 _data = [Vector2(0.017441869, 0.48314613), 0.0, 1.5460671, 0, 0, Vector2(1, 0.9662922), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Animation" id="Animation_fkybt"]
+resource_name = "idle"
+length = 0.55
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.9999998, 0.45062461),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_x3wgy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3smsa"]
+_data = {
+&"RESET": SubResource("Animation_x3wgy"),
+&"idle": SubResource("Animation_fkybt")
+}
+
 [node name="Player" type="RigidBody2D" groups=["player"]]
 collision_mask = 14
 script = ExtResource("1_vgqql")
@@ -63,5 +102,11 @@ scale_amount_min = 0.1
 scale_amount_curve = SubResource("Curve_x3wgy")
 hue_variation_min = 0.05
 hue_variation_max = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3smsa")
+}
+autoplay = "idle"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,18 +2,22 @@ extends RigidBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 @onready var gravity := get_gravity() 
 
 @export var tap_force := 500
 
 var tap_vector := Vector2(0,-tap_force)
-
+var is_started := false
 func _ready() -> void:
-	pass
+	anim_player.play("idle")
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if not is_started:
+		gravity_scale = 0
+		return
 	if Input.is_action_just_pressed("Tap"):
 		linear_velocity.y = 0
 		apply_central_impulse(tap_vector)
@@ -24,6 +28,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		linear_velocity += gravity
 
-
-func _on_body_entered(body: Node) -> void:
-	pass # Replace with function body.
+func on_game_start() -> void:
+	anim_player.stop()
+	is_started = true
+	gravity_scale = 2
