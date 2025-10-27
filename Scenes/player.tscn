@@ -74,6 +74,7 @@ _data = {
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
 collision_mask = 14
+can_sleep = false
 script = ExtResource("1_vgqql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

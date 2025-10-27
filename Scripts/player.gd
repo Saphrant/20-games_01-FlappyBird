@@ -8,7 +8,7 @@ extends RigidBody2D
 @export var tap_force := 600
 
 var tap_vector := Vector2(0,-tap_force)
-var is_started := false
+var is_started : bool
 func _ready() -> void:
 	anim_player.play("idle")
 
@@ -32,3 +32,6 @@ func on_game_start() -> void:
 	is_started = true
 	var tween = create_tween()
 	tween.tween_property(self,"gravity_scale", 2.0, 0.5).set_ease(Tween.EASE_OUT)
+
+func on_game_over() -> void:
+	is_started = false

@@ -54,3 +54,5 @@ texture = ExtResource("3_ltlj5")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GroundDirt/Area2D"]
 polygon = PackedVector2Array(-281, 454, -215, 442, -192, 416, -101, 415, -49, 436, -3, 439, 25, 420, 85, 422, 113, 455, 159, 454, 181, 466, 216, 466, 244, 438, 281, 433, 305, 413, 393, 410, 414, 436, 457, 447, 490, 444, 528, 455, 531, 481, -279, 481)
+
+[connection signal="body_entered" from="GroundDirt/Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,6 +1,22 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bgoj80cvgs7fg"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bgoj80cvgs7fg"]
 
-[ext_resource type="FontFile" uid="uid://bxb5tbtqo7od3" path="res://Assets/Font/fizzy-soda.ttf" id="1_470mv"]
+[ext_resource type="Texture2D" uid="uid://pyun55n5wqj1" path="res://Assets/PNG/UI/buttonLarge.png" id="1_a2l2q"]
+[ext_resource type="FontFile" uid="uid://dxxnjd6oqht3w" path="res://Assets/Font/Pocket Monk.otf" id="2_a2l2q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0omi4"]
+texture = ExtResource("1_a2l2q")
+texture_margin_left = 49.0
+texture_margin_top = 17.0
+texture_margin_right = 49.0
+texture_margin_bottom = 17.0
+modulate_color = Color(0.8, 0.78720003, 0.67200005, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_58jnp"]
+texture = ExtResource("1_a2l2q")
+texture_margin_left = 49.0
+texture_margin_top = 17.0
+texture_margin_right = 49.0
+texture_margin_bottom = 17.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_470mv"]
 content_margin_left = 4.0
@@ -26,7 +42,10 @@ expand_margin_bottom = 2.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a2l2q"]
 
 [resource]
-default_font = ExtResource("1_470mv")
+default_font = ExtResource("2_a2l2q")
+Button/constants/outline_size = 2
+Button/styles/hover = SubResource("StyleBoxTexture_0omi4")
+Button/styles/normal = SubResource("StyleBoxTexture_58jnp")
 Label/colors/font_color = Color(0.99283963, 0.76392347, 0, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0.63, 0.44099998, 0, 1)
