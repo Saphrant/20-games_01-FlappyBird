@@ -19,7 +19,6 @@ func _on_texture_rect_gui_input(event: InputEvent) -> void:
 		preload("res://Assets/musicOn.png"),
 		preload("res://Assets/musicOff.png"),
 	]
-	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if current_texture == 0:

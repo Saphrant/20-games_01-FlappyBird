@@ -195,7 +195,7 @@ func check_and_save_high_score() -> void:
 		save_game(high_score)
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("esc"):
+	if Input.is_action_just_pressed("esc") and not main_menu.canvas_layer.visible:
 		get_tree().reload_current_scene()
 		
 
