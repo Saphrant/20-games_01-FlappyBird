@@ -100,7 +100,7 @@ func _restart_game() -> void:
 
 func _new_game() -> void:
 	get_tree().paused = false
-	score_label.visible = true
+	score_label.visible = false
 	current_score = 0
 	start_timer.start()
 	

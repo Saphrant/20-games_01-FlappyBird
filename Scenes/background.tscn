@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bairsqbp31pdo"]
+[gd_scene load_steps=6 format=3 uid="uid://bairsqbp31pdo"]
 
 [ext_resource type="Texture2D" uid="uid://bmiromuprxlea" path="res://Assets/PNG/background.png" id="1_4aqey"]
 [ext_resource type="Script" uid="uid://cj6iotigxbd3g" path="res://Scripts/background.gd" id="1_xgxeb"]
 [ext_resource type="Texture2D" uid="uid://d4dyvw1nt6f6o" path="res://Assets/PNG/groundRock.png" id="2_xgxeb"]
 [ext_resource type="Texture2D" uid="uid://dvysajgjslfps" path="res://Assets/PNG/groundDirt.png" id="3_ltlj5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgxeb"]
+size = Vector2(808, 60)
 
 [node name="Background" type="Node2D"]
 script = ExtResource("1_xgxeb")
@@ -52,7 +55,8 @@ collision_layer = 4
 position = Vector2(50, 445)
 texture = ExtResource("3_ltlj5")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GroundDirt/Area2D"]
-polygon = PackedVector2Array(-281, 454, -215, 442, -192, 416, -101, 415, -49, 436, -3, 439, 25, 420, 85, 422, 113, 455, 159, 454, 181, 466, 216, 466, 244, 438, 281, 433, 305, 413, 393, 410, 414, 436, 457, 447, 490, 444, 528, 455, 531, 481, -279, 481)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundDirt/Area2D"]
+position = Vector2(0, 447)
+shape = SubResource("RectangleShape2D_xgxeb")
 
 [connection signal="body_entered" from="GroundDirt/Area2D" to="." method="_on_area_2d_body_entered"]
