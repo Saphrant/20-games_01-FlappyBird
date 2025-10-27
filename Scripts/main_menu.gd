@@ -10,3 +10,4 @@ func _ready() -> void:
 func _on_button_pressed() -> void:
 	canvas_layer.visible = false
 	button_start.emit()
+	$"../ButtonClick".play()

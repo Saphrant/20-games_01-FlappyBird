@@ -24,6 +24,8 @@ func _physics_process(_delta: float) -> void:
 		tween.tween_property(animated_sprite_2d, "rotation", -0.5,0.1)
 		tween.tween_property(animated_sprite_2d, "rotation", 0.7,0.5)	
 		cpu_particles_2d.emitting = true		
+		$TapSound.pitch_scale = randf_range(0.8, 1.0)
+		$TapSound.play()
 	else:
 		linear_velocity += gravity
 

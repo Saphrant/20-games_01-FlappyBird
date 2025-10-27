@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://crl80q0wx6im"]
+[gd_scene load_steps=11 format=3 uid="uid://crl80q0wx6im"]
 
 [ext_resource type="Script" uid="uid://b0f7pqub3c8gy" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bairsqbp31pdo" path="res://Scenes/background.tscn" id="1_bo1nx"]
 [ext_resource type="Theme" uid="uid://bgoj80cvgs7fg" path="res://main_theme.tres" id="2_21xkr"]
 [ext_resource type="PackedScene" uid="uid://tcqqabt5pmo7" path="res://Scenes/MainMenu.tscn" id="2_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://cqmi8he10rw2y" path="res://Assets/PNG/UI/UIbg.png" id="3_21xkr"]
+[ext_resource type="AudioStream" uid="uid://dg7gnwelh2424" path="res://Assets/Sound/select_001.ogg" id="6_21xkr"]
+[ext_resource type="AudioStream" uid="uid://dbru0a6s254db" path="res://Assets/Sound/helicopter_blades_spinning_loop_01.wav" id="7_6bp64"]
+[ext_resource type="AudioStream" uid="uid://beyn60j71hyn2" path="res://Assets/Sound/Ambient Vol5 Above The Clouds Main.wav" id="8_344ge"]
+[ext_resource type="AudioStream" uid="uid://2fa75pr3t6f5" path="res://Assets/Sound/Ambient Vol5 Above The Clouds Intensity 1.wav" id="8_ynf5e"]
 
 [sub_resource type="Curve2D" id="Curve2D_jjvhh"]
 _data = {
@@ -308,6 +312,24 @@ wait_time = 0.7
 process_mode = 3
 wait_time = 3.0
 one_shot = true
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_21xkr")
+
+[node name="EngineSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6bp64")
+volume_db = -25.0
+autoplay = true
+
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_ynf5e")
+autoplay = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_344ge")
+volume_db = -20.0
 
 [connection signal="pressed" from="UI/GameOver/VBoxContainer/VBoxContainer3/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/GameOver/VBoxContainer/VBoxContainer3/HBoxContainer/Share" to="." method="_on_share_pressed"]

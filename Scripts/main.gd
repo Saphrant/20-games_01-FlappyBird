@@ -18,6 +18,9 @@ signal game_over
 @onready var spawn_timer: Timer = $Timers/SpawnTimer
 @onready var main_menu: Node2D = $MainMenu
 @onready var start_timer: Timer = $Timers/StartTimer
+@onready var engine_sound: AudioStreamPlayer = $EngineSound
+@onready var music_2: AudioStreamPlayer = $Music2
+@onready var music: AudioStreamPlayer = $Music
 
 #---- References ----
 @onready var obstacle_parent: Node2D = $ObstacleParent
@@ -45,6 +48,7 @@ func _ready() -> void:
 	game_over_UI.visible = false
 	share.visible = false
 	get_tree().paused = false
+	music_2.play()
 
 func _process(_delta: float) -> void:
 	if not is_started:
@@ -66,6 +70,8 @@ func spawn_obstacle() -> void:
 	
 	
 func _game_over() -> void:
+	music_2.play(music.get_playback_position())
+	music.stop()
 	spawn_timer.stop()
 	game_over_UI.visible = true
 	score_label.visible = false
@@ -82,6 +88,8 @@ func _game_over() -> void:
 
 
 func _restart_game() -> void:
+	music.play(music_2.get_playback_position())
+	music_2.stop()
 	player = player_scene.instantiate()
 	player.global_position = player_start_pos.global_position
 	add_child(player)
@@ -103,6 +111,8 @@ func _new_game() -> void:
 	score_label.visible = false
 	current_score = 0
 	start_timer.start()
+	music.play(music_2.get_playback_position())
+	music_2.stop()
 	
 
 func _on_spawn_timer_timeout() -> void:
@@ -135,10 +145,12 @@ func _on_restart_pressed() -> void:
 	var player_node = get_tree().get_first_node_in_group("player")
 	player_node.queue_free()
 	_restart_game()
+	$ButtonClick.play()
 
 
 func _on_share_pressed() -> void:
 	share.visible = true
+	$ButtonClick.play()
 	
 
 func _on_bg_click_eater_gui_input(event: InputEvent) -> void:
