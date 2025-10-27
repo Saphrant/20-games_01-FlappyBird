@@ -39,6 +39,7 @@ func _ready() -> void:
 	high_score = load_game()
 	player.global_position = player_start_pos.global_position
 	add_child(player)
+	main_menu.music_mute.connect(_music_mute)
 	main_menu.button_start.connect(_new_game)
 	game_start.connect(player.on_game_start)
 	game_over.connect(player.on_game_over)
@@ -192,3 +193,16 @@ func check_and_save_high_score() -> void:
 	if current_score > high_score:
 		high_score = current_score
 		save_game(high_score)
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("esc"):
+		get_tree().reload_current_scene()
+		
+
+func _music_mute(mute: bool) -> void:
+	if mute:
+		music_2.volume_db = -100
+		music.volume_db = -100
+	else:
+		music_2.volume_db = -10
+		music.volume_db = -20

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://tcqqabt5pmo7"]
+[gd_scene load_steps=16 format=3 uid="uid://tcqqabt5pmo7"]
 
 [ext_resource type="Script" uid="uid://d17x21oyyhqd3" path="res://Scripts/main_menu.gd" id="1_loo7a"]
 [ext_resource type="Texture2D" uid="uid://cqmi8he10rw2y" path="res://Assets/PNG/UI/UIbg.png" id="2_if7li"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cfl55k7opw8pa" path="res://Assets/PNG/UI/tapRight.png" id="8_riqfo"]
 [ext_resource type="Texture2D" uid="uid://c3iivx7y4vm08" path="res://Assets/PNG/UI/tapLeft.png" id="9_yxkem"]
 [ext_resource type="Theme" uid="uid://bgoj80cvgs7fg" path="res://main_theme.tres" id="10_loo7a"]
+[ext_resource type="Texture2D" uid="uid://d3ti4llg2bq6f" path="res://Assets/musicOn.png" id="11_if7li"]
 
 [sub_resource type="Animation" id="Animation_65hh5"]
 resource_name = "PlaneMovement"
@@ -107,7 +108,6 @@ _data = {
 script = ExtResource("1_loo7a")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -212,4 +212,12 @@ grow_vertical = 2
 size_flags_horizontal = 3
 flat = true
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 740.0
+offset_top = 5.0
+offset_right = 790.0
+offset_bottom = 55.0
+texture = ExtResource("11_if7li")
+
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="gui_input" from="CanvasLayer/TextureRect" to="." method="_on_texture_rect_gui_input"]
